@@ -8,7 +8,7 @@
   apt:
     update_cache: yes
     upgrade: dist
-    force: true
+    #force: true
 
 
 - name: install some base packages
