@@ -1,0 +1,45 @@
+---
+- name: setting up Gitlab stack
+  hosts: all
+  become: true
+  tasks:
+    - name: Include variables
+      include_vars: "all.yaml"
+
+    - name: Setting the basis on all nodes
+      include_role:
+        name: "{{ item }}"
+      with_items:
+        - $PWD/roles/Pre_Setup
+        - $PWD/roles/Install_Docker
+        - $PWD/roles/Node_Exporter
+
+
+    - name: Set up the gitlab server
+      include_role:
+        name: "{{ item }}"
+      with_items:
+        - $PWD/roles/Install_Gitlab_Server_Dockerized
+      when: mode == 'gitlab_server'
+
+
+
+    - name: Set up the gitlab runner
+      include_role:
+        name: "{{ item }}"
+      with_items:
+        - $PWD/roles/Install_Gitlab_Runner_Dockerized
+      when: mode == 'gitlab_runner'
+
+
+
+
+    - name: Set up the monitoring stack
+      include_role:
+        name: "{{ item }}"
+      with_items:
+        - $PWD/roles/Victoria_Metrics
+      when: mode == 'monitoring'
+
+
+
