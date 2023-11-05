@@ -35,7 +35,7 @@
 
 
 
-- name: Run the master redis container
+- name: Run the gitlab server container
   docker_container:
     name: "gitlab_server"
     image: gitlab/gitlab-ce:{{ gitlab_server_version }}
@@ -47,7 +47,7 @@
     volumes:
       - /root/gitlab/config:/etc/gitlab
       - /root/gitlab/logs:/var/log/gitlab
-      - /root/gitlab/data:var/opt/gitlab
+      - /root/gitlab/data:/var/opt/gitlab
 
 
 
