@@ -24,7 +24,7 @@ scrape_configs:
       - targets:
           - monitoring-0:9100
           - gitlab_server:9100
-          - runner-1:9100
+          - runner-0:9100
 
 
 
