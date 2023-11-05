@@ -55,6 +55,7 @@ resource "local_file" "inventory" {
 
 
 
+
 resource "local_file" "etc-hosts" {
   content  = templatefile("${path.module}/etchost.tpl",
     {
