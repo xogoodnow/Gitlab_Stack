@@ -41,7 +41,9 @@
     image: gitlab/gitlab-ce:{{ gitlab_server_version }}
     restart_policy: unless-stopped
     state: started
+    hostname: "{{ external_url }}"
     network_mode: host
+    shm_size: '256m'
     volumes:
       - /root/gitlab/config:/etc/gitlab
       - /root/gitlab/logs:/var/log/gitlab
