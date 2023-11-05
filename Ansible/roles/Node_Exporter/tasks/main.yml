@@ -8,12 +8,22 @@
     update_cache: yes
     upgrade: dist
 
-
 - name: pull the required image for Node Exporter
   docker_image:
     name: prom/node-exporter
     tag: "{{ node_exporter_version }}"
     source: pull
+
+- name: Check if container with the same name exists
+  docker_container_info:
+    name: node-exporter
+  register: existing_container
+
+- name: Remove existing container if it exists
+  docker_container:
+    name: node-exporter
+    state: absent
+  when: existing_container.exists
 
 - name: Run the container for Node Exporter
   docker_container:
@@ -33,7 +43,3 @@
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
       - /:/rootfs:ro
-
-
-
-
