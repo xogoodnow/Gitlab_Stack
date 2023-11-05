@@ -1,0 +1,48 @@
+---
+- name: check connectivity
+  ping:
+    data: alive
+
+
+- name: Create the required directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0777"
+  with_items:
+    - /root/gitlab-runner
+    - /root/gitlab-runner/config
+
+
+
+
+- name: Pull the gitlab image
+  docker_image:
+    name: gitlab-runner:{{ gitlab_runner_version }}
+    source: pull
+
+
+
+
+- name: Run the master redis container
+  docker_container:
+    name: "gitlab_runner"
+    image: gitlab-runner:{{ gitlab_runner_version }}
+    restart_policy: unless-stopped
+    state: started
+    hostname: gitlab-runner
+    privileged: true
+    network_mode: host
+    volumes:
+      - /root/gitlab/config:/etc/gitlab
+      - /root/gitlab/logs:/var/log/gitlab
+      - /root/gitlab/data:var/opt/gitlab
+
+
+
+
+
+
+
