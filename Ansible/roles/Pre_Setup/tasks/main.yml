@@ -24,13 +24,13 @@
       - ca-certificates
       - curl
       - python3
-      - telnet
       - jq
       - resolvconf
       - python3-pip
       - gpg
       - lsb-release
     state: present
+
 
 
 - name: Copy /etc/hosts file
