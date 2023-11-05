@@ -20,7 +20,7 @@
 
 - name: Pull the gitlab image
   docker_image:
-    name: gitlab-runner:{{ gitlab_runner_version }}
+    name: gitlab/gitlab-runner:{{ gitlab_runner_version }}
     source: pull
 
 
@@ -29,7 +29,7 @@
 - name: Run the master redis container
   docker_container:
     name: "gitlab_runner"
-    image: gitlab-runner:{{ gitlab_runner_version }}
+    image: gitlab/gitlab-runner:{{ gitlab_runner_version }}
     restart_policy: unless-stopped
     state: started
     hostname: gitlab-runner
