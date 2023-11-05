@@ -13,7 +13,7 @@ all:
                 runner-hel-${index}:
                     ansible_host: ${ip}
                     ansible_user: root
-                    mode: 'runner_server'
+                    mode: 'gitlab_runner'
             %{ endfor }
 
             %{ for index, ip in monitoring_ips }
