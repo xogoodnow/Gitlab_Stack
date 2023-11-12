@@ -14,6 +14,8 @@
   with_items:
     - /root/gitlab-runner
     - /root/gitlab-runner/config
+    - /root/gitlab-runner/logs
+    - /root/gitlab-runner/data
 
 
 
@@ -36,9 +38,10 @@
     privileged: true
     network_mode: host
     volumes:
-      - /root/gitlab/config:/etc/gitlab
-      - /root/gitlab/logs:/var/log/gitlab
-      - /root/gitlab/data:/var/opt/gitlab
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /root/gitlab-runner/config:/etc/gitlab
+      - /root/gitlab-runner/logs:/var/log/gitlab
+      - /root/gitlab-runner/data:/var/opt/gitlab
 
 
 
