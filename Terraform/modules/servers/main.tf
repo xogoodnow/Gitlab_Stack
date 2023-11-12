@@ -47,7 +47,7 @@ resource "local_file" "inventory" {
     {
       gitlab_ips = hcloud_server.gitlab.*.ipv4_address
       monitoring_ips = hcloud_server.monitoring.*.ipv4_address
-      runner_ips = hcloud_server.monitoring.*.ipv4_address
+      runner_ips = hcloud_server.runner.*.ipv4_address
     }
   )
   filename = "${path.module}/../../inventory.yaml"
