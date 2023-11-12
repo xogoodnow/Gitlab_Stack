@@ -27,7 +27,7 @@
 
 - name: Set the config file for gitlab container
   template:
-    dest: /root/gitlab/config/raw_gitlab.rb
+    dest: /root/gitlab/config/gitlab.rb
     src: templates/gitlab.rb.j2
     mode: "0777"
   vars:
