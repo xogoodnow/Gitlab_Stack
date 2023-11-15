@@ -7,4 +7,4 @@ alertmanager_version: latest
 node_exporter_version: latest
 gitlab_runner_version: latest
 gitlab_server_version: latest
-external_url: gitlab.oblivionone.com
+external_url: "https://gitlab.oblivionone.com"
