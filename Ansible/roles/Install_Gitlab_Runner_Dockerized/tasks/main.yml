@@ -39,7 +39,7 @@
     network_mode: host
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /root/gitlab-runner/config:/etc/gitlab
+      - /root/gitlab-runner/config:/etc/gitlab-runner
       - /root/gitlab-runner/logs:/var/log/gitlab
       - /root/gitlab-runner/data:/var/opt/gitlab
 
