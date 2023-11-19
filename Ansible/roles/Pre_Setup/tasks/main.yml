@@ -29,6 +29,7 @@
       - python3-pip
       - gpg
       - lsb-release
+      - telnet
     state: present
 
 
